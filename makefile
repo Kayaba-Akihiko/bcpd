@@ -24,13 +24,13 @@ else ifeq ($(findstring MINGW,$(UNAME_S)),MINGW)
     # MinGW-w64 on Windows (e.g., MSYS2)
     CC := x86_64-w64-mingw32-gcc
     CFLAGS += -fopenmp -DMINGW64
-    LDFLAGS += -lopenblas -static
+    LDFLAGS += -lopenblas -lm -static
     OUTDIR := ./win
 else
     # Assume Linux
     CC := gcc
     CFLAGS += -fopenmp
-    LDFLAGS += -lopenblas
+    LDFLAGS += -lopenblas -lm
 endif
 
 # Allow user to override CC, CFLAGS, LDFLAGS
